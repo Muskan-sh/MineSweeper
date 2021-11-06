@@ -227,6 +227,7 @@ JSweeper = (function () {
     _hasWon = function () {
         if (_allMinesFlagged() || _allBoxesOpen()) {
             _stopTimer();
+            window.location.href = "http://localhost:8080/MineSweeper_war_exploded/leaderboard";
         }
     }
 

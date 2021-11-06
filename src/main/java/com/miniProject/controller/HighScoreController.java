@@ -8,13 +8,16 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.Collections;
 import java.util.PriorityQueue;
 
 @Controller
-@RequestMapping("/high-score")
+@RequestMapping("/leaderboard")
 public class HighScoreController {
     private PlayerScoreDAO playerScoreDAO;
     private PriorityQueue<PlayerScore> arrayList_easy;
@@ -54,10 +57,9 @@ public class HighScoreController {
         return model.getAttribute("list").toString();
     }
 
-    @ResponseBody
     @GetMapping("")
-    public String getPlayerHighScore(@RequestParam("userName") String userName) {
+    public String getPlayerHighScore() {
         logger.atInfo().log("Request at /high-score");
-        return userName;
+        return "leaderboard";
     }
 }

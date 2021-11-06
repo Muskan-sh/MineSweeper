@@ -15,28 +15,6 @@ public class PlayerScore implements Comparable<PlayerScore>, Externalizable {
     @Column(name = "time")
     private long time;
 
-    @Column(name = "totalTime")
-    private long totalTime;
-
-    @Column(name = "gamePlayed")
-    private int gamePlayed;
-
-    public long getTotalTime() {
-        return totalTime;
-    }
-
-    public void setTotalTime(long totalTime) {
-        this.totalTime = totalTime;
-    }
-
-    public int getGamePlayed() {
-        return gamePlayed;
-    }
-
-    public void setGamePlayed(int gamePlayed) {
-        this.gamePlayed = gamePlayed;
-    }
-
     public long getTime() {
         return time;
     }
@@ -65,16 +43,12 @@ public class PlayerScore implements Comparable<PlayerScore>, Externalizable {
     public void writeExternal(ObjectOutput out) throws IOException {
         out.writeObject(playerScorePk);
         out.writeLong(time);
-        out.writeLong(totalTime);
-        out.writeInt(gamePlayed);
     }
 
     @Override
     public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
         playerScorePk = (PlayerScorePk) in.readObject();
         time = in.readLong();
-        totalTime = in.readLong();
-        gamePlayed = in.readInt();
     }
 
     @Override
@@ -82,8 +56,6 @@ public class PlayerScore implements Comparable<PlayerScore>, Externalizable {
         return "PlayerScore{" +
                 "playerScorePk=" + playerScorePk +
                 ", time=" + time +
-                ", totalTime=" + totalTime +
-                ", gamePlayed=" + gamePlayed +
                 '}';
     }
 

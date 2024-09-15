@@ -6,17 +6,19 @@ window.addEventListener('unload', function () {
         console.log(JSON.stringify({
             feedback: feedback_response
         }));
-        navigator.sendBeacon("feedback", JSON.stringify({
+        navigator.sendBeacon(contextPath + "/feedback", JSON.stringify({
                 feedback: feedback_response
             })
         );
     }
 });
 window.addEventListener("load", async function () {
-    fetch("feedback")
+    fetch(contextPath + "/feedback")
         .then(response => response.json())
         .then(result => {
             $("input[name=feedback][value=" + result.feedback + "]").prop('checked', true)
         })
         .catch(error => console.error(error));
 });
+const feedback_btn = document.getElementById('feedbackButton');
+feedback_btn.classList.add('active', 'disabledbtn');

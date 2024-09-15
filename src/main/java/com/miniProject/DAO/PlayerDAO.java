@@ -15,4 +15,8 @@ public interface PlayerDAO {
     void deletePlayer(Player player);
 
     void updatePlayer(Player player);
+
+    boolean checkUserNameExists(String userName);
+
+    boolean checkEmailExists(String userName);
 }

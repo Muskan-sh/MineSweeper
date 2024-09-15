@@ -46,17 +46,25 @@
                 <h2 class="title">Sign up</h2>
                 <div class="input-field">
                     <i class="fas fa-user-circle"></i>
-                    <form:input path="userName" placeholder="Username" oninput="this.setCustomValidity('')"/>
+                    <form:input id="userName" path="userName" placeholder="Username"
+                                oninput="this.setCustomValidity('')"/>
                 </div>
+                <p id="userNameSuggestion" class="error"></p>
                 <div class="input-field">
                     <i class="fas fa-user"></i>
                     <form:input path="fullName" placeholder="Name" oninput="this.setCustomValidity('')"/>
                 </div>
                 <div class="input-field">
+                    <i class="fas fa-envelope"></i>
+                    <form:input id='email' path="email" placeholder="Email"
+                                oninput="this.setCustomValidity('')"/>
+                </div>
+                <p id="emailSuggestion" class="error"></p>
+                <div class="input-field">
                     <i class="fas fa-lock"></i>
                     <form:password path="password" placeholder="Password" oninput="this.setCustomValidity('')"/>
                 </div>
-                <input type="submit" class="btn" value="Sign up"/>
+                <input id="submitSignUpButton" type="submit" class="btn" value="Sign up"/>
                 <p class="social-text">Or Sign up with social platforms</p>
                 <div class="social-media">
                     <a href="#" class="social-icon">
@@ -73,7 +81,7 @@
     <div class="panels-container">
         <div class="panel left-panel">
             <div class="content">
-                <h3>New here ?</h3>
+                <h2>New here ?</h2>
                 <p>
                     Join Minesweeper today.
                 </p>
@@ -85,7 +93,7 @@
         </div>
         <div class="panel right-panel">
             <div class="content">
-                <h3>One of us ?</h3>
+                <h2>One of us ?</h2>
                 <p>
                     Sign in to Minesweeper
                 </p>
@@ -97,7 +105,7 @@
         </div>
     </div>
 </div>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/entry.js"></script>
 </body>
 </html>

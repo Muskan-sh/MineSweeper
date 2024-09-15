@@ -4,13 +4,16 @@ import javax.persistence.*;
 import java.io.*;
 
 @Entity
-@Table(name = "players")
+@Table(name = "players", indexes = @Index(name = "username", columnList = "username"))
 public class Player implements Externalizable {
     @Serial
     private static final long serialVersionUID = 4638201649372946388L;
 
     @Id
-    @Column
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int UID;
+
+    @Column(nullable = false, unique = true)
     private String userName;
 
     @Column(nullable = false)
@@ -19,9 +22,31 @@ public class Player implements Externalizable {
     @Column(nullable = false)
     private String password;
 
+    @Column
+    private boolean accountVerified = false;
+
     @Enumerated(EnumType.ORDINAL)
     @Column
     private Feedback feedback;
+
+    @Column(name = "email", unique = true)
+    private String email;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public boolean isAccountVerified() {
+        return accountVerified;
+    }
+
+    public void setAccountVerified(boolean accountVerified) {
+        this.accountVerified = accountVerified;
+    }
 
     public Feedback getFeedback() {
         return feedback;

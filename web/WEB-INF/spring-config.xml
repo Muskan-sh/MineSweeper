@@ -19,13 +19,18 @@
 
     <!-- Add support for conversion, formatting and validation support -->
     <mvc:annotation-driven/>
-    <context:property-placeholder location="/WEB-INF/data.properties"/>
+    <context:property-placeholder location="/WEB-INF/data.properties,/WEB-INF/gmail.properties"/>
 
     <!-- Define Spring MVC view resolver -->
     <bean
             class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/view/"/>
         <property name="suffix" value=".jsp"/>
+    </bean>
+
+    <!--    Define Multipart resolver -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="10000000"/>
     </bean>
 
     <!-- Step 1: Define Database DataSource / connection pool -->
@@ -52,7 +57,7 @@
             <props>
                 <prop key="hibernate.dialect">${dialect}</prop>
                 <prop key="hibernate.show_sql">true</prop>
-                <prop key="hibernate.hbm2ddl.auto">update</prop>
+                <prop key="hibernate.hbm2ddl.auto">validate</prop>
             </props>
         </property>
     </bean>

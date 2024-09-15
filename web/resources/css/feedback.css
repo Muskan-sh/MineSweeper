@@ -1,5 +1,5 @@
 .feedback {
-    --normal: #414052;
+    --normal: hsl(0, 0%, 95%);
     --normal-shadow: #313140;
     --normal-shadow-top: #4c4b60;
     --normal-mouth: #2e2e3d;
@@ -11,12 +11,13 @@
     --active-eye: #313036;
     --active-tear: #76b5e7;
     --active-shadow-angry: #e94f1d;
-    --hover: #454456;
+    --hover: #92ccd3;
     --hover-shadow-top: #59586b;
     margin: 0;
     padding: 0;
     list-style: none;
     display: flex;
+    align-items: center;
 }
 
 .feedback label {
@@ -424,23 +425,28 @@ html {
     box-sizing: inherit;
 }
 
-body {
-    min-height: 100vh;
+.emojiContainer {
+    height: 100vh;
     display: flex;
-    font-family: "Inter", Arial;
     justify-content: center;
-    align-items: center;
-    background: #181820;
+    background: linear-gradient(to left, hsl(186deg 42% 24%), #afdbf5);
+
+    margin: 0;
 }
 
-body .twitter {
+body {
+    overflow: hidden;
+    margin: 0;
+}
+
+.emojiContainer .twitter {
     position: fixed;
     display: block;
     right: 12px;
     bottom: 12px;
 }
 
-body .twitter svg {
+.emojiContainer .twitter svg {
     width: 32px;
     height: 32px;
     fill: #1da1f2;
